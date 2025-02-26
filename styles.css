@@ -1,0 +1,299 @@
+/* Global styles and variables */
+:root {
+  --accent: rgba(0, 150, 100, 1);
+  --hoverlink: rgba(130, 80, 250);
+  --bg-dark: #222;
+  --bg-light: #fff;
+  --text-dark: #333;
+  --text-light: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  background: var(--bg-light);
+}
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 0;
+}
+h1 {
+  font-size: 5em;
+}
+h2 {
+  font-size: 2em;
+  color: var(--accent);
+  margin-bottom: 0.5em;
+  padding-bottom: 0.2em;
+  border-bottom: none; /* no underline */
+  display: inline-block;
+}
+h3 {
+  font-size: 1.25em;
+  margin: 0.5em 0;
+  color: var(--text-dark);
+}
+
+/* Layout and common elements */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  z-index: 1000;
+}
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  position: relative;
+}
+.logo {
+  font-size: 1.2em;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text-light);
+}
+
+.nav-list {
+  list-style: none;
+  display: flex; 
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 8px 12px;
+  display: block;
+}
+nav a:hover, nav a:focus {
+  color: var(--hoverlink);
+  text-decoration: underline;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* Add a hamburger menu for mobile screens */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  .menu-toggle:focus {
+    color: var(--hoverlink);
+  }
+  .nav-list {
+    display: none; /* Hide the links initially */
+    flex-direction: column; 
+    background: var(--text-dark);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  .nav-list a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 8px 12px;
+    display: block;
+    text-align: center;
+  }
+  .nav-list a:hover, .nav-list a:focus {
+    color: var(--hoverlink);
+    text-decoration: underline;
+  }
+  .nav-list.active {
+    display: flex; /* Show the links when active */
+  }
+}
+
+/* Hero section */
+.hero {
+  background: linear-gradient(150deg, 
+              rgba(0, 255, 0, 0.5) 0%, 
+              rgba(0, 180, 204, 0.3) 50%, 
+              rgba(130, 80, 250, 0.9) 100%);
+  color: var(--text-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero-content {
+  max-width: 800px;
+  padding-top: 70px; /* offset for header */
+}
+.hero h1 {
+  margin: 0.2em 0;
+}
+.tagline {
+  font-size: 3em;
+  font-weight: 600;
+  margin: 0.2em 0;
+}
+.subtagline {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 0.5em 0 1em;
+}
+.social-icons a {
+  color: var(--text-light);
+  margin: 0 10px;
+  font-size: 1.5em;
+}
+.social-icons a:hover {
+  color: var(--hoverlink);
+}
+.scroll-down {
+  display: inline-block;
+  color: var(--text-light);
+  font-size: 2em;
+  margin-top: 2em;
+  animation: bounce 2s infinite;
+}
+.scroll-down:hover {
+  color: var(--hoverlink);
+}
+
+/* Bounce animation for scroll-down arrow */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(10px); }
+  60% { transform: translateY(5px); }
+}
+
+/* Section common styles (except hero) */
+section {
+  padding: 60px 0;
+}
+#research, #contributions {
+  background: #f9f9f9;
+}
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Research section */
+.research-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  text-align: left;
+}
+.research-text {
+  width: 100%;
+}
+
+/* Research section */
+#research ul {
+  margin: 1em 0 0 1em;
+}
+#research li {
+  margin-bottom: 0.5em;
+}
+
+/* Education section */
+.education-cards a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.education-cards a:hover {
+  color: var(--hoverlink);
+}
+.education-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.education-cards .card {
+  flex: 1 1 calc(33% - 20px);
+  min-width: 250px;
+}
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* contributions section */
+.pill-button {
+  padding: 0.4em 1em;
+  border-radius: 100px;
+  border: 2px solid var(--accent);
+  background-color: #fff;
+  color: var(--accent);
+  text-decoration: none;
+  margin-right: 0.25em;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  white-space: nowrap;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.pill-button > span {
+  font-size: 1em;
+}
+
+.pill-button > img {
+  height: 1em;
+  display: inline-block;
+  transform:translate(0, 0.125em);
+}
+
+.contributions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+/* .text-link {
+  color: var(--accent);
+  text-decoration: underline;
+} */
+.pill-button:hover {
+  border: 2px solid var(--hoverlink);
+  color: var(--hoverlink);
+}
+
+/* Footer */
+footer {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  text-align: center;
+  padding: 20px 0;
+}
+footer p {
+  margin: 0;
+  font-size: 0.9em;
+}
